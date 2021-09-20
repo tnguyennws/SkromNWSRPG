@@ -18,7 +18,7 @@ namespace SkromRPGTests
                 "Back",
                 "Chest",
                 "Legs",
-                "Feets",
+                "Feet",
                 "Weapon",
                 "OffHand",
                 "TwoHand"

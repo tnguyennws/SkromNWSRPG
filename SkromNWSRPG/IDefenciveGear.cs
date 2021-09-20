@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SkromNWSRPG
 {
+    /*
+     * Cette interface pourrait vous être utile
+     */
     interface IDefenciveGear
     {
     }

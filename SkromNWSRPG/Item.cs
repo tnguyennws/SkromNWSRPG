@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace SkromNWSRPG
 {
+    /*
+     * Cette classe représente un Objet dans notre RPG
+     * Il porte un Name
+     * C'est une classe Abstraite
+     */
     public class Item
     {
     }

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace SkromNWSRPG
 {
+    /*
+     * Cette classe représente un équippement dans notre RPG
+     * Il possède un emplacement d'équipement
+     * C'est une classe Abstraite
+     * Elle hérite de la classe Item
+     */
     public abstract class Gear
     {
     }
