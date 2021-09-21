@@ -15,5 +15,13 @@ namespace SkromNWSRPG
      */
     public enum GearSlot
     {
+        Head,
+        Back,
+        Chest,
+        Legs,
+        Feet,
+        Weapon,
+        OffHand,
+        TwoHand
     }
 }
