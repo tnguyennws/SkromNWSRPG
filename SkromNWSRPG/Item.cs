@@ -11,7 +11,13 @@ namespace SkromNWSRPG
      * Il porte un Name
      * C'est une classe Abstraite
      */
-    public class Item
+    public abstract class Item
     {
+        public string Name;
+
+        public Item(string name)
+        {
+            Name = name;
+        }
     }
 }
