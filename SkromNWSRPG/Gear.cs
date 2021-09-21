@@ -14,13 +14,10 @@ namespace SkromNWSRPG
      */
     public abstract class Gear : Item
     {
-        public Gear(string Name) : base(Name)
-        {
-
-        }
-
         public GearSlot Slot = new GearSlot();
-
-        
+        public Gear(string Name, GearSlot Slot) : base(Name)
+        {
+            this.Slot = Slot;
+        }   
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SkromNWSRPG
 {
@@ -25,7 +21,21 @@ namespace SkromNWSRPG
      *
      * Elle lance une exception si ce n'est pas le cas
      */
-    public class HandledItem
+    public class HandledItem : Gear
     {
+        public int Damage;
+        public int Defence;
+
+        public HandledItem(string Name, GearSlot Slot, int Damage, int Defence) : base(Name, Slot)
+        {
+            this.Damage = Damage;
+            this.Defence = Defence;
+
+           if(Slot != GearSlot.Weapon && Slot != GearSlot.OffHand && Slot != GearSlot.TwoHand)
+            {
+                throw new Exception("Select Weapon, TwoHand or OffHand");
+            }
+        }
+
     }
 }
