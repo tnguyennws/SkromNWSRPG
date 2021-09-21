@@ -28,5 +28,23 @@ namespace SkromNWSRPG
      */
     public class Character
     {
+        public string Name;
+        public int Life;
+
+        public Character(string Name, int Life)
+        {
+            this.Name = Name;
+            this.Life = Life;
+        }
+
+        public void Equip()
+        {
+
+        }
+
+        public void GetItemInSlot()
+        {
+
+        }
     }
 }

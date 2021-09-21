@@ -21,7 +21,21 @@ namespace SkromNWSRPG
      * Cette classe possède la Méthode Use
      * Elle prend un Character et applique l'Effect sur lui
      */
-    public class Consumable
+    public class Consumable : Item
     {
+        public string Description;
+        public Action<Character> Effect;
+
+        public Consumable(string Name, string Description, Action<Character> Effect) : base(Name)
+        {
+            this.Description = Description;
+            this.Effect = Effect;
+        }
+
+        public void Use(object Character)
+        {
+            
+        }
+
     }
 }
