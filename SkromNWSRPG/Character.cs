@@ -30,6 +30,8 @@ namespace SkromNWSRPG
     {
         public string Name;
         public int Life;
+        public Dictionary<GearSlot, Gear> Stuff = new();
+
 
         public Character(string Name, int Life)
         {
@@ -37,14 +39,69 @@ namespace SkromNWSRPG
             this.Life = Life;
         }
 
-        public void Equip()
+        public void Equip(Gear equipment)
         {
+            switch(equipment.Slot)
+            {
+                case GearSlot.TwoHand:
+                    Stuff[GearSlot.TwoHand] = equipment;
+                    Stuff[GearSlot.Weapon] = null;
+                    Stuff[GearSlot.OffHand] = null;
+                    break;
 
+                case GearSlot.Weapon:
+                    if(Stuff[GearSlot.Weapon] != null && Stuff[GearSlot.OffHand] == null)
+                    {
+                        Stuff[GearSlot.OffHand] = equipment;
+                    }
+                    else
+                    {
+                        Stuff[GearSlot.Weapon] = equipment;
+                    }
+                    Stuff[GearSlot.TwoHand] = null;
+                    break;
+
+                case GearSlot.OffHand:
+                    Stuff[GearSlot.OffHand] = equipment;
+                    Stuff[GearSlot.TwoHand] = null;
+                    break;
+
+                case GearSlot.Head:
+                    Stuff[GearSlot.Head] = equipment;
+                    break;
+
+                case GearSlot.Back:
+                    Stuff[GearSlot.Back] = equipment;
+                    break;
+
+                case GearSlot.Chest:
+                    Stuff[GearSlot.Chest] = equipment;
+                    break;
+
+                case GearSlot.Legs:
+                    Stuff[GearSlot.Legs] = equipment;
+                    break;
+
+                case GearSlot.Feet:
+                    Stuff[GearSlot.Feet] = equipment;
+                    break;
+
+                default:
+                    Console.WriteLine("Erreur, ce n'est pas une arme ou armure");
+                    break;
+            }
         }
 
-        public void GetItemInSlot()
+        public Gear GetItemInSlot(GearSlot slot)
         {
-
+            if(Stuff[slot] != null)
+            {
+                return Stuff[slot];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
