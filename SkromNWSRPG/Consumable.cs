@@ -32,9 +32,9 @@ namespace SkromNWSRPG
             this.Effect = Effect;
         }
 
-        public void Use(object Character)
+        public void Use(Character c)
         {
-            
+            Effect(c);
         }
 
     }
