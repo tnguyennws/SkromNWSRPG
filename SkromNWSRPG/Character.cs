@@ -109,15 +109,57 @@ namespace SkromNWSRPG
 
         public int GetTotalDamage()
         {
-            return 52;
+            HandledItem arme1, arme2;
+            int tot = 0;
+            arme1 = (HandledItem)GetItemInSlot(GearSlot.Weapon);
+            arme2 = (HandledItem)GetItemInSlot(GearSlot.OffHand);
+            tot += arme1.Damage + arme2.Damage;
+
+            return tot;
         }
 
         public int GetTotalDefence()
         {
-            return 94;
+            HandledItem arme1, arme2;
+            Armor armor1, armor2, armor3, armor4, armor5;
+            int tot = 0;
+            arme1 = (HandledItem)GetItemInSlot(GearSlot.Weapon);
+            arme2 = (HandledItem)GetItemInSlot(GearSlot.OffHand);
+
+           
+            armor1 = (Armor)GetItemInSlot(GearSlot.Head);
+            armor2 = (Armor)GetItemInSlot(GearSlot.Back);
+            armor3 = (Armor)GetItemInSlot(GearSlot.Chest);
+            armor4 = (Armor)GetItemInSlot(GearSlot.Legs);
+            armor5 = (Armor)GetItemInSlot(GearSlot.Feet);
+
+            if (Stuff[GearSlot.Head] != null)
+            {
+                tot += armor1.Defence;
+            }
+            if (Stuff[GearSlot.Back] != null)
+            {
+                tot += armor2.Defence;
+            }
+            if (Stuff[GearSlot.Chest] != null)
+            {
+                tot += armor3.Defence;
+            }
+            if (Stuff[GearSlot.Legs] != null)
+            {
+                tot += armor4.Defence;
+            }
+            if (Stuff[GearSlot.Feet] != null)
+            {
+                tot += armor5.Defence;
+            }
+
+            tot += arme1.Defence + arme2.Defence;
+
+            return tot;
         }
 
-        public Gear GetItemInSlot(GearSlot slot)
+            public Gear GetItemInSlot(GearSlot slot)
         {
             if(Stuff[slot] != null)
             {
