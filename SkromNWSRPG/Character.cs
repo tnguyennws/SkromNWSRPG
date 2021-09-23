@@ -33,11 +33,23 @@ namespace SkromNWSRPG
         public Dictionary<GearSlot, Gear> Stuff = new();
         public bool state = false;
 
-
         public Character(string Name, int Life)
         {
             this.Name = Name;
             this.Life = Life;
+            Init();
+        }
+
+        public void Init()
+        {
+            Stuff[GearSlot.Head] = null;
+            Stuff[GearSlot.Back] = null;
+            Stuff[GearSlot.Chest] = null;
+            Stuff[GearSlot.Legs] = null;
+            Stuff[GearSlot.Feet] = null;
+            Stuff[GearSlot.Weapon] = null;
+            Stuff[GearSlot.TwoHand] = null;
+            Stuff[GearSlot.OffHand] = null;
         }
 
         public void Equip(Gear equipment)
@@ -46,28 +58,27 @@ namespace SkromNWSRPG
             switch(equipment.Slot)
             {
                 case GearSlot.TwoHand:
-                    Stuff[GearSlot.TwoHand] = equipment;
-                    Stuff[GearSlot.Weapon] = null;
+                    Stuff[GearSlot.Weapon] = equipment;
                     Stuff[GearSlot.OffHand] = null;
                     break;
 
                 case GearSlot.Weapon:
-                    if(state == true)
+                    if(this.state == true)
                     {
                         Stuff[GearSlot.OffHand] = equipment;
-                        state = false;
+                        this.state = false;
                     }
                     else
                     {
                         Stuff[GearSlot.Weapon] = equipment;
-                        state = true;
+                        this.state = true;
                     }
                     Stuff[GearSlot.TwoHand] = null;
                     break;
 
                 case GearSlot.OffHand:
                     Stuff[GearSlot.OffHand] = equipment;
-                    Stuff[GearSlot.TwoHand] = null;
+                    Stuff[GearSlot.Weapon] = null;
                     break;
 
                 case GearSlot.Head:
@@ -94,6 +105,16 @@ namespace SkromNWSRPG
                     Console.WriteLine("Erreur, ce n'est pas une arme ou armure");
                     break;
             }
+        }
+
+        public int GetTotalDamage()
+        {
+            return 52;
+        }
+
+        public int GetTotalDefence()
+        {
+            return 94;
         }
 
         public Gear GetItemInSlot(GearSlot slot)
