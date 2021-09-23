@@ -31,6 +31,7 @@ namespace SkromNWSRPG
         public string Name;
         public int Life;
         public Dictionary<GearSlot, Gear> Stuff = new();
+        public bool state = false;
 
 
         public Character(string Name, int Life)
@@ -41,6 +42,7 @@ namespace SkromNWSRPG
 
         public void Equip(Gear equipment)
         {
+             
             switch(equipment.Slot)
             {
                 case GearSlot.TwoHand:
@@ -50,13 +52,15 @@ namespace SkromNWSRPG
                     break;
 
                 case GearSlot.Weapon:
-                    if(Stuff[GearSlot.Weapon] != null && Stuff[GearSlot.OffHand] == null)
+                    if(state == true)
                     {
                         Stuff[GearSlot.OffHand] = equipment;
+                        state = false;
                     }
                     else
                     {
                         Stuff[GearSlot.Weapon] = equipment;
+                        state = true;
                     }
                     Stuff[GearSlot.TwoHand] = null;
                     break;
